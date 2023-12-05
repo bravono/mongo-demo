@@ -1,4 +1,8 @@
-//
+// Get all the publish frontend and backend courses
+
+// Sort them by their price in descending order
+
+// Pick only their name and author and print them
 
 const mongoose = require("mongoose");
 
