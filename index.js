@@ -43,27 +43,44 @@ async function getCourse() {
 
 // getCourse();
 
-// async function updateCourse(id) {
-//   const course = await Course.findById(id);
-//   if (!course) return;
+// QUERY FIRST APPROACH
 
-//   console.log(id);
+async function updateCourse(id) {
+  const course = await Course.findById(id);
+  if (!course) return;
 
-//   course.isPublished = true;
-//   course.author = "Bravono";
+  console.log(id);
 
-//   const result = await course.save();
-//   console.log(result);
-// }
+  course.isPublished = false;
+  course.author = "Bravono";
 
-// updateCourse("5a68fdf95db93f6477053ddd");
+  const result = await course.save();
+  console.log(result);
+}
+
+// updateCourse("65674af0e7809b54e06d264a");
+
+//UPDATE FIRST APPROACH
 
 async function updateCourse(id) {
   const result = await Course.update(
     { _id: id },
-    { $set: { author: "Bravo", isPublished: false } }
+    { $set: { author: "Bravo", isPublished: true } }
   );
   console.log(result);
 }
 
-updateCourse("5a68fdd7bee8ea64649c2777");
+// updateCourse("65674af0e7809b54e06d264a");
+
+// UPDATE FIRST APPROACH && GETTING THE COURSE OBJ
+
+async function updateCourse(id) {
+  const course = await Course.findByIdAndUpdate(
+    id,
+    { $set: { author: "Bravo", isPublished: false } },
+    { new: true }
+  );
+  console.log(course);
+}
+
+updateCourse("656b8aabbee0923744fe8788");
